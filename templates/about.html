@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="container d-flex align-items-center flex-column mb-3">
+   <span class="title"><h1>{% block title %} About Angel's Blog {% endblock %}</h1></span>
+   
+   <div class="about-text ">
+   <p>Angel's blog is a multipurpose blog where  you can get gist about  anything and everything.<br>
+
+      If you think you have a juicy story that is interesting, inspirational, controversial, newsworthy and above all factual, feel free to contact us <a href="{{url_for('contact')}}">here</a>
+   </p>
+
+</div>
+   
+
+   <h1 class="happy">HAPPY READING</h1>
+</div>
+
+
+{% endblock %}

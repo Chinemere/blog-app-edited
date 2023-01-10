@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container ">
+    <span class="title"><h1>{% block title %} {{ post.title }}  {% endblock %}</h1></span>
+    <div class="content row">
+            <div class="post">
+                
+                
+                <div class=" row">
+                    <p>{{ post.content }}</p>
+                </div>
+                <div class="row">
+                    <p style="color:rgb(36, 0, 36);"> <span style="color:rgb(122, 0, 122);">Posted on: </span> {{ post.date_posted.strftime('%A %d %B %Y') }}</p>
+                </div>
+                <hr>
+                <div class="edit row">
+                    
+                    {% if current_user.is_authenticated and current_user.username== post.author  %}
+                       
+                   <a href="{{url_for('editpost', pid=post.id)}}" class="btn">
+                    <button class="btn btn-primary"> Edit Post</button>
+                   </a>
+                
+                   {% endif %}
+                   
+                
+                </div> 
+            </div>
+    </div>
+    <div class="row">
+        
+        {% for postcomment in post.comments %}
+            {{ postcomment }}<br>
+         
+        {% endfor %}
+   
+    </div>
+        
+
+    <div class="comment row">
+        <form action="{{url_for('postComments', post_id=post.id)}}" method="post">
+            <textarea name="comments" id="" cols="70" rows="10" placeholder="Add Comments"></textarea><br>
+            <input type="submit" value="Add Comment">
+        </form>
+
+    </div>
+</div>
+{% endblock %}

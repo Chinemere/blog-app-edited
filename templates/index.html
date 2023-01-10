@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container d-flex justify-content-center">
+
+    <span class="title"><h1>{% block title %} Latest Post {% endblock %}</h1></span>
+</div>
+{% for post in posts %}
+    <div class=" container2">
+    
+    <div class="content">
+        
+        <div class="row">
+            
+    
+            <div class="col-md-2 p-2">
+                
+                <div class=" card d-flex p-2 justify-content-center"  style="width:60rem; height: 20rem;  " >
+                 
+                    
+                <div class="card-body">
+                    
+                    <h5 class="card-title">
+                        <a class="p-title" href="{{url_for('post', post_id=post.id)}}">
+                            {{ post.title }}
+                        </a>
+                    </h5>
+                
+                        <a class="p-title" href="{{url_for('post', post_id=post.id)}}">
+                            <p class="card-text">{{ post.content[:100] }}...  <a href="{{url_for('post', post_id=post.id)}}"> Read More</a></p>
+                
+                <div class=" author">
+                    <p> <span class="author" style="color:rgb(36, 0, 36)">Author:</span>  {{ post.author }}</p>
+                </div>
+                <div class=" date">
+                    <p> <span class="post-on" style="color:rgb(36, 0, 36)">Posted On: </span>{{ post.date_posted.strftime('%A %d %B %Y') }}</p>
+                </div>
+                
+            </div>
+            
+
+        </div>
+
+        
+    </div>
+    
+    </div>
+    
+</div>
+
+
+    </div>
+{% endfor %}
+
+
+{% endblock %}

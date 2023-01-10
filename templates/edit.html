@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+	<div class="row">
+	    
+	    <div class="col-md-8 col-md-offset-2">
+	        
+    		<h1>Edit post</h1>
+    		
+    		<form action="{{url_for('editpost', pid = post.id, pic_id=img.id)}}" method="POST" enctype="multipart/form-data">
+                
+                <br>
+                <div class="container">
+                    <div class="row">
+                    <div class="col-sm-3 imgUp">
+                      <div class="imagePreview"></div>
+                  <label class="btn btn-primary">
+                        edit picture<input type="file" id="file-input" class="uploadFile img" value=""		
+						style="width: 0px;height: 0px;overflow: hidden;" name="pic" >
+						<img src="{{url_for('get_img', id=img.id)}}" alt="logo" id="img" name="oldpic">
+                    </label>
+                    </div>
+
+					
+                   </div>
+                  </div>
+                 
+				
+    		    <div class="form-group">
+    		        <label for="title">Title <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="title"  value="{{post.title}}"/>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" name="description" value=""> {{post.content}} </textarea>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <p><span class="require"></span> </p>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <input type="submit" class="btn btn-primary" value="submit edit">
+    		          
+    		      
+    		    </div>
+    		    
+    		</form>
+		</div>
+		
+	</div>
+</div> 
+
+
+
+
+
+
+
+
+
+{% endblock %}
